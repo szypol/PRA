@@ -13,7 +13,7 @@ public class Parsing {
         exam = "";
         for (i = 0; i < j; i++) {
             if (query.charAt(i) == ' ') {
-                System.out.println(query.substring(x, i));
+                //System.out.println(query.substring(x, i));
                 if ((query.substring(x, i).equals("Select")) || (query.substring(x, i).equals("select")) || (query.substring(x, i).equals("SELECT"))) {
                     exam += 1;
                 } else if ((query.substring(x, i).equals("From")) || (query.substring(x, i).equals("from")) || (query.substring(x, i).equals("FROM"))) {

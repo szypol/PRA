@@ -28,7 +28,10 @@ public class SQL_Query_List_Creator {
                 System.out.println("Correct");
                 save.save(exercise,query);
             }
-            System.out.println(exercise);
+            else
+            {
+                System.out.println("Incorrect");
+            }
             System.out.println("Press 'c' to continue or any key to end");
             control = inputco.nextLine();
         }
