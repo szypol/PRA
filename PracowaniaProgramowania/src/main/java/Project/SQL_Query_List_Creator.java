@@ -13,20 +13,20 @@ public class SQL_Query_List_Creator {
         Scanner inputex = new Scanner(System.in);
         Scanner inputqu = new Scanner(System.in);
         Scanner inputco = new Scanner(System.in);
-        int exercise;
+        String exercise;
         String query;
-        String control = "c";
+        String control = "C";
         System.out.println("Welcome in SQL_Query_List_Creator");
-        while ((control.equals("c")) || (control.equals("C")))
+        while (control.equals("C"))
         {
             System.out.println("Waiting for exercise number");
-            exercise = inputex.nextInt();
+            exercise = inputex.nextLine();
             System.out.println("Waiting for query");
             query = inputqu.nextLine();
             if(pars.check(query))
             {
                 System.out.println("Correct");
-                save.save(exercise,query);
+                save.add(exercise,query);
             }
             else
             {
@@ -34,7 +34,9 @@ public class SQL_Query_List_Creator {
             }
             System.out.println("Press 'c' to continue or any key to end");
             control = inputco.nextLine();
+            control = control.toUpperCase();
         }
+        save.save();
         save.closefile();
     }
 }
