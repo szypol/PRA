@@ -178,6 +178,5 @@ public class Timechecker implements Job {
         {
             System.out.println("Do przerwy pozostało: " + (45-adate.getMinutes()) + "min");
         }
-        //System.out.println("" + adate);
     }
 }
