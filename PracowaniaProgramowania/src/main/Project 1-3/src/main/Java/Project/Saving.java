@@ -13,18 +13,21 @@ import java.util.ArrayList;
  */
 
 public class Saving implements Job {
-    public Saving() throws FileNotFoundException {}
-    //PrintWriter answers = new PrintWriter("odp.txt");
     protected ArrayList<String> querybase = new ArrayList();
-    /*public void save() {
-        for(int i=0;i<querybase.size();i+=2)
+    public void save() {
+        try
         {
             PrintWriter answers = new PrintWriter("odp.txt");
-            answers.println("Zadanie " + querybase.get(i));
-            answers.println(querybase.get(i+1));
+            for(int i=0;i<querybase.size();i+=2) {
+                answers.println("Zadanie " + querybase.get(i));
+                answers.println(querybase.get(i + 1));
+            }
             answers.close();
         }
-    }*/
+        catch (FileNotFoundException cos){
+            cos.printStackTrace();
+        }
+    }
     public void execute(JobExecutionContext arg0) throws JobExecutionException {
 
         try
@@ -40,7 +43,6 @@ public class Saving implements Job {
             cos.printStackTrace();
         }
     }
-    //public void closefile(){answers.close();}
     protected void add(String exercise,String query){
         if(querybase.isEmpty())
         {
@@ -53,9 +55,6 @@ public class Saving implements Job {
             {
                 int q = Integer.parseInt(querybase.get(i));
                 int e = Integer.parseInt(exercise);
-                System.out.println("q: " + q);
-                System.out.println("e: " + e);
-                System.out.println("i: " + i);
                 if(q==e)
                 {
                     querybase.remove(i+1);
