@@ -14,21 +14,17 @@ public class SQL_Query_List_Creator  {
         Parsing pars = new Parsing();
         Saving savee  = new Saving();
         Scheduler sc = StdSchedulerFactory.getDefaultScheduler();
-        Scheduler tc = StdSchedulerFactory.getDefaultScheduler();
         JobDetail job = JobBuilder.newJob(Saving.class).build();
-        JobDetail job2 = JobBuilder.newJob(Timechecker.class).build();
         Trigger save = TriggerBuilder.newTrigger().withIdentity("CronTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0/30 * * ? * *")).build();
+        Scheduler tc = StdSchedulerFactory.getDefaultScheduler();
+        JobDetail job2 = JobBuilder.newJob(Timechecker.class).build();
         Trigger time = TriggerBuilder.newTrigger().withIdentity("CTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0 * * ? * *")).build();
-        //Timechecker time = new Timechecker();
 
-        Scanner inputex = new Scanner(System.in);
-        Scanner inputqu = new Scanner(System.in);
-        Scanner inputco = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         String exercise;
         String query;
         String control = "C";
         System.out.println("Welcome in SQL_Query_List_Creator");
-        //time.execute();
         sc.scheduleJob(job, save);
         tc.scheduleJob(job2, time);
         sc.start();
@@ -36,9 +32,9 @@ public class SQL_Query_List_Creator  {
         while (control.equals("C"))
         {
             System.out.println("Waiting for exercise number");
-            exercise = inputex.nextLine();
+            exercise = input.nextLine();
             System.out.println("Waiting for query");
-            query = inputqu.nextLine();
+            query = input.nextLine();
             if (pars.check(query)) {
                 System.out.println("Correct");
                 savee.add(exercise, query);
@@ -46,10 +42,11 @@ public class SQL_Query_List_Creator  {
                 System.out.println("Incorrect");
             }
             System.out.println("Press 'c' to continue or any key to end");
-            control = inputco.nextLine();
+            control = input.nextLine();
             control = control.toUpperCase();
         }
         tc.shutdown();
         sc.shutdown();
+        savee.save();
     }
 }
