@@ -49,9 +49,7 @@ public class SQL_Query_List_Creator  {
             control = inputco.nextLine();
             control = control.toUpperCase();
         }
-        //savee.execute();
         tc.shutdown();
         sc.shutdown();
-        //savee.closefile();
     }
 }
