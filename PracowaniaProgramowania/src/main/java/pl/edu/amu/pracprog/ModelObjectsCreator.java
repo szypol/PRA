@@ -2,6 +2,7 @@ package pl.edu.amu.pracprog;
 
 import hibernate.model.Address;
 import hibernate.model.Employee;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ public class ModelObjectsCreator {
         emp.setFirstName("Jan");
         emp.setLastName("Polak" + new Random().nextInt());
         emp.setSalary(100);
+        emp.setBirth(new DateTime(DateTime.now()));
         emp.setPesel(Math.abs(new Random().nextInt()));
 
         emp2 = new Employee();
@@ -57,6 +59,7 @@ public class ModelObjectsCreator {
         emp.setAddress(address);
         emp2.setAddress(address);
         emp.getSubworkers().add(emp2);
+        emp2.getSubworkers().add(emp);
 
         employees = new ArrayList<Employee>();
         employees.add(emp);

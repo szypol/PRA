@@ -3,8 +3,9 @@
         <id>0</id>
         <firstName>Jan</firstName>
         <lastName>Polak1718163293</lastName>
-        <salary>100</salary>
+        <pieniadz>100</pieniadz>
         <pesel>1448602246</pesel>
+        <birth>2017-11-09 20:46:42</birth>
         <address>
             <id>0</id>
             <street>poznanska</street>
@@ -19,8 +20,9 @@
                 <id>0</id>
                 <firstName>Roman</firstName>
                 <lastName>Polak804783654</lastName>
-                <salary>100</salary>
+                <pieniadz>100</pieniadz>
                 <pesel>2046462127</pesel>
+                <birth>2017-11-09 20:46:42</birth>
                 <address>
                     <id>0</id>
                     <street>poznanska</street>
@@ -38,8 +40,9 @@
         <id>0</id>
         <firstName>Roman</firstName>
         <lastName>Polak804783654</lastName>
-        <salary>100</salary>
+        <pieniadz>100</pieniadz>
         <pesel>2046462127</pesel>
+        <birth>2017-11-09 20:46:42</birth>
         <address>
             <id>0</id>
             <street>poznanska</street>

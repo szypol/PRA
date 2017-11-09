@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public class GsonSerialization {
 
-    final static Logger logger = Logger.getLogger(GsonSerialization.class);
+    final static org.apache.log4j.Logger logger = Logger.getLogger(GsonSerialization.class);
 
 
     public static void printJson(){
@@ -25,6 +25,9 @@ public class GsonSerialization {
         String prettySerializedAlbum = gsonPretty.toJson(album);
         logger.info("Pretty-print album json:");
         System.out.println(prettySerializedAlbum);
+
+        Album albumRed = gson.fromJson(serializedAlbum,Album.class);
+        System.out.println(albumRed.getTitle() + " " + albumRed.getYear());
 
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now.toString());

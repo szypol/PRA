@@ -1,10 +1,15 @@
 package pl.edu.amu.pracprog;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.SerializableString;
+import com.fasterxml.jackson.core.io.CharacterEscapes;
+import com.fasterxml.jackson.core.io.SerializedString;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import hibernate.model.Employee;
 import org.apache.log4j.Logger;
 
@@ -23,6 +28,8 @@ public class JacksonSerialization {
     public static void serializeDemo(ObjectMapper mapper, String fileSuffix) throws IOException {
         //Set mapper to pretty-print
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.registerModule(new JodaModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);;
 
         //Create objects to serialize
         ModelObjectsCreator objectsCreator = new ModelObjectsCreator();
@@ -72,14 +79,15 @@ public class JacksonSerialization {
     }
 
     public static void main(String[] args) throws IOException {
-        ObjectMapper xmlMapper = new XmlMapper();
-        serializeDemo(xmlMapper, "xml");
-        deserializeDemo(xmlMapper, "xml");
+
 
         ObjectMapper jsonMapper = new ObjectMapper();
         serializeDemo(jsonMapper, "json");
         deserializeDemo(jsonMapper, "json");
 
+        ObjectMapper xmlMapper = new XmlMapper();
+        serializeDemo(xmlMapper, "xml");
+        deserializeDemo(xmlMapper, "xml");
 
     }
 }
