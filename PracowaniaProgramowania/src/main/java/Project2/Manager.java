@@ -5,13 +5,14 @@ import Project2.model.Employee;
 import Project2.model.Job;
 import Project2.model.Position;
 import Project2.model.Vehicle;
+import Project2.queries.query;
+import Project2.serialization.XMLserialization;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.persistence.*;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ListResourceBundle;
 import java.util.Random;
 
 public class Manager {
@@ -35,9 +36,9 @@ public class Manager {
                 p1.setMaxsalary(5000.00);
 
                 Position p2 = new Position();
-                p1.setName("kierownik");
-                p1.setMinsalary(3000.00);
-                p1.setMaxsalary(7000.00);
+                p2.setName("kierownik");
+                p2.setMinsalary(3000.00);
+                p2.setMaxsalary(7000.00);
 
                 Employee e1 = new Employee();
                 e1.setFirstname("Pawel");
@@ -87,18 +88,13 @@ public class Manager {
                 v2.setRegistrationnumber("PO65400");
                 v2.setStatus("Wolny");
 
-                List<Vehicle> vl1 = new ArrayList();
-                List<Employee> emp1 = new ArrayList();
-
-                vl1.add(v1);
-                vl1.add(v2);
-                emp1.add(e1);
-                emp1.add(e2);
-
                 Job j1 = new Job();
                 j1.setClient(c1);
-                j1.setVehiclelist(vl1);
-                j1.setEmployeelist(emp1);
+                j1.getEmployee().add(e1);
+                j1.getEmployee().add(e2);
+                j1.getEmployee().add(e3);
+                j1.getVehicle().add(v1);
+                j1.getVehicle().add(v2);
                 j1.setLoad("Tortilla");
                 j1.setRoutelenght(178);
                 j1.setDeadline(ZonedDateTime.of(2017,11,22,8,0,0,0,ZoneId.systemDefault()));
@@ -123,6 +119,8 @@ public class Manager {
 
                 System.out.println("Done");
 
+                querydziala(entity);
+
                 entity.close();
 
         }
@@ -134,5 +132,23 @@ public class Manager {
         {
             manager.close();
         }
+
     }
+
+    static void querydziala(EntityManager entityManager) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Vehicle> employees = new query(entityManager).Getvehiclebrands();
+        try{
+            String cos = objectMapper.writeValueAsString(employees);
+           System.out.println("DZIALALLALALALALALLA : " + cos);
+        }
+       catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
 }

@@ -20,13 +20,11 @@ public class Job {
     @JoinColumn(name = "client",referencedColumnName = "client_id")
     Client client;
 
-    @OneToMany(mappedBy = "Vehicle")
-    @Column(name = "vehicle")
-    private List<Vehicle> vehicle;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Vehicle> vehicle = new ArrayList<>();
 
-    @OneToMany(mappedBy = "Employee")
-    @Column(name = "employee")
-    private List<Employee> employee;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Employee> employee = new ArrayList<>();
 
     @Column(name = "load")
     private String load;
@@ -51,13 +49,30 @@ public class Job {
 
     public Job() {}
 
-    public int getId(){return jid;}
+    public int getJid(){return jid;}
     public void setClient (Client nclient) {client = nclient;}
     public Client getClient() {return client;}
-    public void setVehiclelist (List<Vehicle> nvehicle ) {vehicle = nvehicle;}
-    public List<Vehicle> getVehiclelist() {return vehicle;}
-    public void setEmployeelist (List<Employee> nemployee ) {employee = nemployee;}
-    public List<Employee> getEmployeelist() {return employee;}
+
+    public void setJid(int jid) {
+        this.jid = jid;
+    }
+
+    public List<Vehicle> getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(List<Vehicle> vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public List<Employee> getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(List<Employee> employee) {
+        this.employee = employee;
+    }
+
     public void setLoad (String nload) {load = nload;}
     public String getLoad() {return load;}
     public void setRoutelenght (int rlenght) {routelenght = rlenght;}

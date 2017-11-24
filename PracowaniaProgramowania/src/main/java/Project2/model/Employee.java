@@ -36,6 +36,9 @@ public class Employee {
     @Column(name = "status")
     private String status;
 
+    //@OneToMany(mappedBy = "employes")
+    //private List<Employee> employee;
+
     public Employee() {}
 
     public int getId(){return eid;}
