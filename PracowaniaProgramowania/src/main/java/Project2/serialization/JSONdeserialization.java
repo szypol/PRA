@@ -10,33 +10,30 @@ public class JSONdeserialization {
 
     public void JSONdeserialization() {}
 
+    ObjectMapper objectMapper = new ObjectMapper();
+
     public Client DeserializeClient () throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return (objectMapper.readValue(new File("target/serialization.json"), Client.class));
+        return (objectMapper.readValue(new File("Clientd.json"), Client.class));
     }
 
     public Employee DeserializeEmployee () throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return (objectMapper.readValue(new File("target/serialization.json"), Employee.class));
+        return (objectMapper.readValue(new File("Employee.json"), Employee.class));
     }
 
     public Job DeserializeJob () throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return (objectMapper.readValue(new File("target/serialization.json"), Job.class));
+        return (objectMapper.readValue(new File("Job.json"), Job.class));
     }
 
     public Position DeserializePosition () throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return (objectMapper.readValue(new File("target/serialization.json"), Position.class));
+        return (objectMapper.readValue(new File("Position.json"), Position.class));
     }
 
     public Vehicle DeserializeVehicle () throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return (objectMapper.readValue(new File("target/serialization.json"), Vehicle.class));
+        return (objectMapper.readValue(new File("Vehicle.json"), Vehicle.class));
     }
 }

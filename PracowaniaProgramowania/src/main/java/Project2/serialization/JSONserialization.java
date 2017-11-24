@@ -2,41 +2,51 @@ package Project2.serialization;
 
 import Project2.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.geometry.Pos;
 
+import javax.management.Query;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class JSONserialization {
 
+    ObjectMapper objectMapper = new ObjectMapper();
+
     public void JSONserialization() {}
 
-    public void SerializeClient (Client cli) throws IOException
+    public void SerializeClient (List<Client> cli) throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File("target/serialization.json"), cli);
+        System.out.println("Serializuje Klientow!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        String x = objectMapper.writeValueAsString(cli);
+        objectMapper.writeValue(new File("Client.json"), x);
     }
 
-    public void SerializeEmployee (Employee emp) throws IOException
+    public void SerializeEmployee (List <Employee> emp) throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File("target/serialization.json"), emp);
+        System.out.println("Serializuje Pracownikow!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        String x = objectMapper.writeValueAsString(emp);
+        objectMapper.writeValue(new File("Employee.json"), x);
     }
 
-    public void SerializeJob (Job job) throws IOException
+    public void SerializeJob (List <Job> job) throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File("target/serialization.json"), job);
+        System.out.println("Serializuje Zlecenia!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        String x = objectMapper.writeValueAsString(job);
+        objectMapper.writeValue(new File("Job.json"), x);
     }
 
-    public void SerializePosition (Position pos) throws IOException
+    public void SerializePosition (List<Position> pos) throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File("target/serialization.json"), pos);
+        System.out.println("Serializuje Klienta!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        String x = objectMapper.writeValueAsString(pos);
+        objectMapper.writeValue(new File("Position.json"), x);
     }
 
-    public void SerializeVehicle (Vehicle veh) throws IOException
+    public void SerializeVehicle (List <Vehicle> veh) throws IOException
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File("target/serialization.json"), veh);
+        System.out.println("Serializuje Auto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        String x = objectMapper.writeValueAsString(veh);
+        objectMapper.writeValue(new File("Vehicle.json"), x);
     }
 }

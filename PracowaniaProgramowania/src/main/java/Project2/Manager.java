@@ -6,6 +6,7 @@ import Project2.model.Job;
 import Project2.model.Position;
 import Project2.model.Vehicle;
 import Project2.queries.query;
+import Project2.serialization.JSONserialization;
 import Project2.serialization.XMLserialization;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -117,7 +118,23 @@ public class Manager {
 
                 entity.getTransaction().commit();
 
+
                 System.out.println("Done");
+
+                JSONserialization JSONs = new JSONserialization();
+                XMLserialization XMLS = new XMLserialization();
+
+                JSONs.SerializeClient(new query(entity).GetClientdata());
+                JSONs.SerializeEmployee(new query(entity).GetEmployeedata());
+                JSONs.SerializeJob(new query(entity).GetJobdata());
+                JSONs.SerializeVehicle(new query(entity).GetVehicledata());
+                JSONs.SerializePosition(new query(entity).GetPositiondata());
+
+                XMLS.SerializeClient(new query(entity).GetClientdata());
+                XMLS.SerializeEmployee(new query(entity).GetEmployeedata());
+                XMLS.SerializeJob(new query(entity).GetJobdata());
+                XMLS.SerializeVehicle(new query(entity).GetVehicledata());
+                XMLS.SerializePosition(new query(entity).GetPositiondata());
 
                 querydziala(entity);
 
@@ -140,7 +157,7 @@ public class Manager {
         List<Vehicle> employees = new query(entityManager).Getvehiclebrands();
         try{
             String cos = objectMapper.writeValueAsString(employees);
-           System.out.println("DZIALALLALALALALALLA : " + cos);
+           System.out.println("DZIALA!!!!!!!!!!!!!! : " + cos);
         }
        catch(Exception e)
         {
