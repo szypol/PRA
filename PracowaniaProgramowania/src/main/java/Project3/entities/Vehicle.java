@@ -10,22 +10,22 @@ public class Vehicle {
 
     @Id
     @GeneratedValue
-    @Column(name = "vehicle_id")
+    @Column(name = "VehicleId")
     private int vid;
 
-    @Column(name = "brand")
+    @Column(name = "Brand")
     private String brand;
 
-    @Column(name = "type")
+    @Column(name = "Type")
     private String type;
 
-    @Column(name = "capacity")
+    @Column(name = "Capacity")
     private double capacity;
 
-    @Column(name = "registration_number")
+    @Column(name = "RegistrationNumber")
     private String registrationnumber;
 
-    @Column(name = "status")
+    @Column(name = "Status")
     private String status;
 
     public Vehicle() {}
