@@ -1,45 +1,57 @@
 package Project3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="Vehicle",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"vehicle_id"})})
-
+        @UniqueConstraint(columnNames = {"VehicleId"})})
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,
+        property="refId", scope=Vehicle.class)
 public class Vehicle {
 
     @Id
     @GeneratedValue
-    @Column(name = "VehicleId")
-    private int vid;
+    @Column
+    private int VehicleId;
 
-    @Column(name = "Brand")
-    private String brand;
+    @Column
+    private String Brand;
 
-    @Column(name = "Type")
-    private String type;
+    @Column
+    private String Type;
 
-    @Column(name = "Capacity")
-    private double capacity;
+    @Column
+    private double Capacity;
 
-    @Column(name = "RegistrationNumber")
-    private String registrationnumber;
+    @Column
+    private String RegistrationNumber;
 
-    @Column(name = "Status")
-    private String status;
+    @Column
+    private String Status;
 
     public Vehicle() {}
 
-    public int getId(){return vid;}
-    public void setBrand (String nbrand) {brand = nbrand;}
-    public String getBrand() {return brand;}
-    public void setType (String ntype) {type = ntype;}
-    public String getType() {return type;}
-    public void setCapacity (double ccity ) {capacity = ccity;}
-    public double getCapacity() {return capacity;}
-    public void setRegistrationnumber (String rnumber) {registrationnumber = rnumber;}
-    public String getRegistrationnumber() {return registrationnumber;}
-    public void setStatus (String nstatus) {status = nstatus;}
-    public String getStatus() {return status;}
+    public Vehicle(String Brand, String Type, double Capacity, String RegistrationNumber, String Status) {
+        this.Brand=Brand;
+        this.Type=Type;
+        this.Capacity=Capacity;
+        this.RegistrationNumber=RegistrationNumber;
+        this.Status=Status;
+    }
+
+    public int getId(){return VehicleId;}
+    public void setBrand (String Brand) {this.Brand = Brand;}
+    public String getBrand() {return Brand;}
+    public void setType (String Type) {this.Type = Type;}
+    public String getType() {return Type;}
+    public void setCapacity (double Capacity ) {this.Capacity = Capacity;}
+    public double getCapacity() {return Capacity;}
+    public void setRegistratioNumber (String RegistrationNumber) {this.RegistrationNumber = RegistrationNumber;}
+    public String getRegistratioNumber() {return RegistrationNumber;}
+    public void setStatus (String Status) {this.Status = Status;}
+    public String getStatus() {return Status;}
 
 }

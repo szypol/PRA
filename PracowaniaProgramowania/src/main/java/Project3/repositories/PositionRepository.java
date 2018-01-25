@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface PositionRepository extends CrudRepository<Position, String>, PagingAndSortingRepository<Position, String> {
 
-    List<Position> findByName(String name);
+    List<Position> findByName(String Name);
 
     @Query("select p.MinSalary From Position p where p.Name = ?1")
-    Integer minsalaryonposition(String name);
+    Integer minsalaryonposition(String Name);
 
     @Query("select p.MaxSalary From Position p where p.Name = ?1")
-    Integer maxsalaryonposition(String name);
+    Integer maxsalaryonposition(String Name);
 }

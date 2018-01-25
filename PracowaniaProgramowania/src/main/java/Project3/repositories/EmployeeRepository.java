@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface EmployeeRepository extends CrudRepository<Employee, Integer>, PagingAndSortingRepository<Employee, Integer> {
 
-    List<Employee> fingByPersonalId(int personalid);
-    List<Employee> findByFirtNameAndLastName(String firstname, String lastname);
-    List<Employee> findByEmployeeId(int eid);
+    List<Employee> fingByPersonalId(int PersonalId);
+    List<Employee> findByFirtNameAndLastName(String FirstName, String LastName);
+    List<Employee> findByEmployeeId(int EmployeeId);
 
     @Query("select count(*) from Employee e where e.Position= ?1")
-    Integer numbeerofemployeesonposition(String position);
+    Integer numbeerofemployeesonposition(String Position);
 }

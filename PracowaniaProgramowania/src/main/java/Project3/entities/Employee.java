@@ -1,55 +1,70 @@
 package Project3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 @Entity
 @Table(name="Employee",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"employee_id"})})
+        @UniqueConstraint(columnNames = {"EmployeeId"})})
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,
+        property="refId", scope=Employee.class)
 
 public class Employee {
 
     @Id @GeneratedValue
-    @Column(name = "EmployeeId")
-    private int eid;
+    @Column
+    private int EmployeeId;
 
-    @Column(name = "FirstName")
-    private String firstname;
+    @Column
+    private String FirstName;
 
-    @Column(name = "LastName")
-    private String lastname;
+    @Column
+    private String LastName;
 
-    @Column(name = "PersonalId", nullable = false, unique = true)
-    private int personalid;
+    @Column(nullable = false, unique = true)
+    private int PersonalId;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "Position",referencedColumnName = "Name")
-    Position position;
+    @JoinColumn(referencedColumnName = "Name")
+    Position Position;
 
-    @Column(name = "Salary")
-    private double salary;
+    @Column
+    private double Salary;
 
-    @Column(name = "EmploymentDate")
-    private ZonedDateTime employmentdate;
+    @Column
+    private ZonedDateTime EmploymentDate;
 
-    @Column(name = "Status")
-    private String status;
+    @Column
+    private String Status;
 
     public Employee() {}
 
-    public int getId(){return eid;}
-    public void setFirstname (String fname) {firstname = fname;}
-    public String getFirstname() {return firstname;}
-    public void setLastname (String lname) {lastname = lname;}
-    public String getLastname() {return lastname;}
-    public void setPersonalid (int pid ) {personalid = pid;}
-    public int getPersonalid() {return personalid;}
-    public void setPosition (Position nposition) {position = nposition;}
-    public Position getPosition() {return position;}
-    public void setSalary (double nsalary ) {salary = nsalary;}
-    public double getSalary() {return salary;}
-    public void setEmploymentdate (ZonedDateTime emdate) {employmentdate = emdate;}
-    public ZonedDateTime getEmploymentdate() {return employmentdate;}
-    public void setStatus (String nstatus) {status = nstatus;}
-    public String getStatus() {return status;}
+    public Employee(String FirstName, String LastName, int PersonalId, Position Position, double Salary, ZonedDateTime EmploymentDate, String Status) {
+        this.FirstName=FirstName;
+        this.LastName=LastName;
+        this.PersonalId=PersonalId;
+        this.Position=Position;
+        this.Salary=Salary;
+        this.EmploymentDate=EmploymentDate;
+        this.Status=Status;
+    }
+
+    public int getEmployeeId(){return EmployeeId;}
+    public void setFirstName (String FirstName) {this.FirstName = FirstName;}
+    public String getFirstName() {return FirstName;}
+    public void setLastMame (String LastName) {this.LastName = LastName;}
+    public String getLastName() {return LastName;}
+    public void setPersonalId (int PersonalId ) {this.PersonalId = PersonalId;}
+    public int getPersonalId() {return PersonalId;}
+    public void setPosition (Position Position) {this.Position = Position;}
+    public Position getPosition() {return Position;}
+    public void setSalary (double Salary ) {this.Salary = Salary;}
+    public double getSalary() {return Salary;}
+    public void setEmploymentDate (ZonedDateTime EmploymentDate) {this.EmploymentDate = EmploymentDate;}
+    public ZonedDateTime getEmploymentDate() {return EmploymentDate;}
+    public void setStatus (String Status) {this.Status = Status;}
+    public String getStatus() {return Status;}
 }

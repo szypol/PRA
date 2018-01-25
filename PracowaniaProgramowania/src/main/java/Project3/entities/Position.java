@@ -4,27 +4,33 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Position",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"name"})})
+        @UniqueConstraint(columnNames = {"Name"})})
 
 public class Position {
 
     @Id
-    @Column(name = "Name")
-    private String name;
+    @Column
+    private String Name;
 
-    @Column(name = "MinSalary")
-    private double minsalary;
+    @Column
+    private double MinSalary;
 
-    @Column(name = "MaxSalary")
-    private double maxsalary;
+    @Column
+    private double MaxSalary;
 
     public Position() {}
 
-    public void setName (String nname) {name = nname;}
-    public String getName() {return name;}
-    public void setMinsalary (double mnsalary ) {minsalary = mnsalary;}
-    public double getMinsalary() {return minsalary;}
-    public void setMaxsalary (double mxsalary) {maxsalary = mxsalary;}
-    public double getMaxsalary() {return maxsalary;}
+    public Position(String Name, double MinSalary, double MaxSalary) {
+        this.Name=Name;
+        this.MinSalary=MinSalary;
+        this.MaxSalary=MaxSalary;
+    }
+
+    public void setName (String Name) {this.Name = Name;}
+    public String getName() {return Name;}
+    public void setMinSalary (double MinSalary ) {this.MinSalary = MinSalary;}
+    public double getMinSalary() {return MinSalary;}
+    public void setMaxSalary (double MaxSalary) {this.MaxSalary = MaxSalary;}
+    public double getMaxSalary() {return MaxSalary;}
 
 }

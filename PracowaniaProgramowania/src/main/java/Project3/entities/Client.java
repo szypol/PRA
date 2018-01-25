@@ -1,44 +1,87 @@
 package Project3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
+
+import static org.hibernate.sql.InFragment.NULL;
 
 @Entity
 @Table(name="Client",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"client_id"})})
+        @UniqueConstraint(columnNames = {"ClientId"})})
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,
+        property="refId", scope=Client.class)
 
 public class Client {
 
     @Id
     @GeneratedValue
-    @Column(name = "ClientId")
-    private int cid;
+    private  int id;
 
-    @Column(name = "FirstName")
-    private String firstname;
+    @Column
+    private String ClientId;
 
-    @Column(name = "LastName")
-    private String lastname;
+    @Column
+    private String FirstName;
 
-    @Column(name = "CompanyName")
-    private String companyname;
+    @Column
+    private String LastName;
 
-    @Column(name = "NIP")
-    private int nip;
+    @Column
+    private String CompanyName;
 
-    @Column(name = "Locality")
-    private String locality;
+    @Column
+    private String NIP;
+
+    @Column
+    private String Locality;
 
     public Client() {}
 
-    public int getId(){return cid;}
-    public void setFirstname (String fname) {firstname = fname;}
-    public String getFirstname() {return firstname;}
-    public void setLastname (String lname) {lastname = lname;}
-    public String getLastname() {return lastname;}
-    public void setCompanyname (String cname ) {companyname = cname;}
-    public String getCompanyname() {return companyname;}
-    public void setNip (int nnip) {nip = nnip;}
-    public int getNip() {return nip;}
-    public void setLocality (String nlocality ) {locality = nlocality;}
-    public String getLocality() {return locality;}
+    public Client(String FirstName, String LastName, String CompanyName, String NIP, String Locality)
+    {
+        if(CompanyName == "NULL")
+        {
+            this.FirstName=FirstName;
+            this.LastName=LastName;
+            this.Locality=Locality;
+            this.CompanyName = NULL;
+        }
+        else
+        {
+            this.FirstName=FirstName;
+            this.LastName=LastName;
+            this.Locality=Locality;
+            this.CompanyName=CompanyName;
+            this.NIP=NIP;
+        }
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setClientId(String clientId) {
+        ClientId = clientId;
+    }
+
+
+
+    public String getClientId(){return ClientId;}
+    public void setFirstname (String FirstName) {this.FirstName = FirstName;}
+    public String getFirstname() {return FirstName;}
+    public void setLastname (String LastName) {this.LastName = LastName;}
+    public String getLastname() {return LastName;}
+    public void setCompanyname (String CompanyName ) {this.CompanyName = CompanyName;}
+    public String getCompanyname() {return CompanyName;}
+    public void setNip (String NIP) {this.NIP = NIP;}
+    public String getNip() {return NIP;}
+    public void setLocality (String Locality ) {this.Locality = Locality;}
+    public String getLocality() {return Locality;}
 }

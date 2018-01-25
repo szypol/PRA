@@ -9,16 +9,16 @@ import java.util.List;
 
 public interface VehicleRepository extends CrudRepository<Vehicle, Integer>, PagingAndSortingRepository<Vehicle, Integer> {
 
-    List<Vehicle> findByVehicleIdOrRegistrationNumber(int vid, String registrationnumber);
-    List<Vehicle> findByBrand(String brand);
-    List<Vehicle> findByType(String type);
+    List<Vehicle> findByVehicleIdOrRegistrationNumber(int VehicleId, String RegistrationNumber);
+    List<Vehicle> findByBrand(String Brand);
+    List<Vehicle> findByType(String Type);
 
     @Query("select v.Capacity from Vehicle v where v.VehicleId = ?1")
-    Integer vehiclecapacity(int vehicleid);
+    Integer vehiclecapacity(int VehicleId);
 
     @Query("select count(*) from Vehicle v where v.Brand = ?1")
-    Integer numberofvehicleswithbrand(String brand);
+    Integer numberofvehicleswithbrand(String Brand);
 
     @Query("select count(*) from Vehicle v where v.Type = ?1")
-    Integer numberofvehiclesintype(String type);
+    Integer numberofvehiclesintype(String Type);
 }

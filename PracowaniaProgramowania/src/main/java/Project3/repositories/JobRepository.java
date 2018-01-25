@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface JobRepository extends CrudRepository<Job, Integer>, PagingAndSortingRepository<Job, Integer> {
 
-    List<Job> findByJobId(int jid);
-    List<Job> findByLoadAndClient(String load, int clientid);
+    List<Job> findByJobId(int JobId);
+    List<Job> findByLoadAndClient(String Load, int ClientId);
 
     @Query("select j.Status from Job j where j.JobId = ?1")
-    String jobstatus(int jid);
+    String jobstatus(int JobId);
 }

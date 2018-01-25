@@ -3,6 +3,7 @@ package Project;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import org.hsqldb.Trigger;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
@@ -15,18 +16,18 @@ public class SQL_Query_List_Creator  {
         Saving savee  = new Saving();
         Scheduler sc = StdSchedulerFactory.getDefaultScheduler();
         JobDetail job = JobBuilder.newJob(Saving.class).build();
-        Trigger save = TriggerBuilder.newTrigger().withIdentity("CronTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0/30 * * ? * *")).build();
+        Trigger save = (Trigger) TriggerBuilder.newTrigger().withIdentity("CronTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0/30 * * ? * *")).build();
         Scheduler tc = StdSchedulerFactory.getDefaultScheduler();
         JobDetail job2 = JobBuilder.newJob(Timechecker.class).build();
-        Trigger time = TriggerBuilder.newTrigger().withIdentity("CTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0 * * ? * *")).build();
+        Trigger time = (Trigger) TriggerBuilder.newTrigger().withIdentity("CTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0 * * ? * *")).build();
 
         Scanner input = new Scanner(System.in);
         String exercise;
         String query;
         String control = "C";
         System.out.println("Welcome in SQL_Query_List_Creator");
-        sc.scheduleJob(job, save);
-        tc.scheduleJob(job2, time);
+        sc.scheduleJob(job, (org.quartz.Trigger) save);
+        tc.scheduleJob(job2, (org.quartz.Trigger) time);
         sc.start();
         tc.start();
         while (control.equals("C"))
