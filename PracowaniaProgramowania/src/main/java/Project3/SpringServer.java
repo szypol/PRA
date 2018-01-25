@@ -17,7 +17,7 @@ public class SpringServer extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(SpringServer.class);
     }
-    
+
     public static void main(String[] args) throws Exception {
         SpringApplication.run(SpringServer.class, args);
     }
