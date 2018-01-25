@@ -9,13 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @SpringBootApplication
-@EnableJpaRepositories("Project3.repositories")
+@EnableJpaRepositories//("Project3.repositories")
 public class SpringServer extends SpringBootServletInitializer {
 
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(SpringServer.class);
+    }
+
+    @RequestMapping("/")
+    @ResponseBody
+    String home() {
+        return "Hello World!";
     }
 
     public static void main(String[] args) throws Exception {
