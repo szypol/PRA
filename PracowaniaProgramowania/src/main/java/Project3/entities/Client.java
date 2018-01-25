@@ -10,22 +10,22 @@ public class Client {
 
     @Id
     @GeneratedValue
-    @Column(name = "client_id")
+    @Column(name = "ClientId")
     private int cid;
 
-    @Column(name = "first_name")
+    @Column(name = "FirstName")
     private String firstname;
 
-    @Column(name = "last_name")
+    @Column(name = "LastName")
     private String lastname;
 
-    @Column(name = "company_name")
+    @Column(name = "CompanyName")
     private String companyname;
 
     @Column(name = "NIP")
     private int nip;
 
-    @Column(name = "locality")
+    @Column(name = "Locality")
     private String locality;
 
     public Client() {}

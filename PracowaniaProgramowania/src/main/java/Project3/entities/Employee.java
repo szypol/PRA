@@ -10,33 +10,30 @@ import java.time.ZonedDateTime;
 public class Employee {
 
     @Id @GeneratedValue
-    @Column(name = "employee_id")
+    @Column(name = "EmployeeId")
     private int eid;
 
-    @Column(name = "first_name")
+    @Column(name = "FirstName")
     private String firstname;
 
-    @Column(name = "last_name")
+    @Column(name = "LastName")
     private String lastname;
 
-    @Column(name = "personal_id", nullable = false, unique = true)
+    @Column(name = "PersonalId", nullable = false, unique = true)
     private int personalid;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "position",referencedColumnName = "name")
+    @JoinColumn(name = "Position",referencedColumnName = "Name")
     Position position;
 
-    @Column(name = "salary")
+    @Column(name = "Salary")
     private double salary;
 
-    @Column(name = "employment_date")
+    @Column(name = "EmploymentDate")
     private ZonedDateTime employmentdate;
 
-    @Column(name = "status")
+    @Column(name = "Status")
     private String status;
-
-    //@OneToMany(mappedBy = "employes")
-    //private List<Employee> employee;
 
     public Employee() {}
 

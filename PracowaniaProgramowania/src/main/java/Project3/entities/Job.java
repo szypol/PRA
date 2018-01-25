@@ -13,11 +13,11 @@ public class Job {
 
     @Id
     @GeneratedValue
-    @Column(name = "job_id")
+    @Column(name = "JobId")
     private int jid;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "client",referencedColumnName = "client_id")
+    @JoinColumn(name = "Client",referencedColumnName = "ClientId")
     Client client;
 
     @OneToMany(cascade = CascadeType.PERSIST)
@@ -26,25 +26,25 @@ public class Job {
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Employee> employee = new ArrayList<>();
 
-    @Column(name = "load")
+    @Column(name = "Load")
     private String load;
 
-    @Column(name = "route_lenght")
+    @Column(name = "RouteLenght")
     private int routelenght;
 
-    @Column(name = "deadline")
+    @Column(name = "Deadline")
     private ZonedDateTime deadline;
 
-    @Column(name = "price")
+    @Column(name = "Price")
     private double price;
 
-    @Column(name = "start_date")
+    @Column(name = "StartDate")
     private ZonedDateTime startdate;
 
-    @Column(name = "end_date")
+    @Column(name = "EndDate")
     private ZonedDateTime enddate;
 
-    @Column(name = "status")
+    @Column(name = "Status")
     private String status;
 
     public Job() {}

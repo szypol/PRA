@@ -9,13 +9,13 @@ import javax.persistence.*;
 public class Position {
 
     @Id
-    @Column(name = "name")
+    @Column(name = "Name")
     private String name;
 
-    @Column(name = "min_salary")
+    @Column(name = "MinSalary")
     private double minsalary;
 
-    @Column(name = "max_salary")
+    @Column(name = "MaxSalary")
     private double maxsalary;
 
     public Position() {}
