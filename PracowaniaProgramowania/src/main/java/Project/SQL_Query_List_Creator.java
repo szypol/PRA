@@ -2,8 +2,6 @@ package Project;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-import org.hsqldb.Trigger;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
