@@ -1,4 +1,4 @@
-/*package Project3;
+package Project3;
 
 
 import org.junit.Test;
@@ -15,4 +15,3 @@ public class SpringServerTest {
     public void contextLoads() {
     }
 }
-*/
