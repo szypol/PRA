@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Optional;
 import java.util.UUID;
 
-@Controller("/qwerty")
+@Controller
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,12 +24,12 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @RequestMapping(value = "/client", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/clients", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Client> list(Model model) {
         return clientService.showAllClient();
     }
 
-    @RequestMapping(value = "/client/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/clients/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Client> list(@PathVariable("page") Integer pageNr, @RequestParam("size") Optional<Integer> howManyOnPage) {
         return clientService.showAllClientPaging(pageNr,howManyOnPage.orElse(2));
     }

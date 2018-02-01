@@ -20,6 +20,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SpringServer extends SpringBootServletInitializer {
 
+    public static void main(String[] args) {
+        SpringApplication.run(SpringServer.class, args);
+    }
+
     @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
@@ -36,9 +40,5 @@ public class SpringServer extends SpringBootServletInitializer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select().apis(RequestHandlerSelectors.basePackage("Project3.controllers"))
                 .build();
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpringServer.class, args);
     }
 }

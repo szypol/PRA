@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-@Controller("/")
+@Controller
 @RestController
 @RequestMapping("/")
 public class IndexControllers {
