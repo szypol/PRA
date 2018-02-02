@@ -47,6 +47,7 @@ public class ClientController {
     @RequestMapping(value = "/client", method = RequestMethod.POST)
     public ResponseEntity<Client> create(@RequestBody @Valid @NotNull Client client) {
         client.setClientNumber(UUID.randomUUID().toString());
+        clientService.saveClient(client);
         return ResponseEntity.ok().body(client);
     }
 
